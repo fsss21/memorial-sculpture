@@ -1,0 +1,287 @@
+@font-face {
+  font-family: 'Anticva';
+  src: url('https://cdn.jsdelivr.net/gh/KonstatinKrastev/Anticva-Font@main/fonts/Anticva-Regular.woff2') format('woff2'),
+       url('https://cdn.jsdelivr.net/gh/KonstatinKrastev/Anticva-Font@main/fonts/Anticva-Regular.woff') format('woff'),
+       url('https://cdn.jsdelivr.net/gh/KonstatinKrastev/Anticva-Font@main/fonts/Anticva-Regular.ttf') format('truetype'),
+       url('/fonts/Anticva-Regular.woff2') format('woff2'),
+       url('/fonts/Anticva-Regular.woff') format('woff'),
+       url('/fonts/Anticva-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+.catalog {
+  min-height: 100vh;
+  padding: 40px 20px;
+  padding-top: 100px;
+  color: #fff;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  font-family: 'Anticva', serif !important;
+}
+
+.catalogBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center 20%;
+  background-repeat: no-repeat;
+  z-index: 0;
+}
+
+.catalogContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin: 0 auto;
+  width: 100%;
+  z-index: 1;
+}
+
+.catalogCenter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  width: 100%;
+  position: relative;
+}
+
+.catalogEmpty {
+  font-family: 'Anticva', serif;
+  font-size: 18px;
+  color: #CBB293;
+  text-align: center;
+  padding: 40px 20px;
+  margin: 0;
+}
+
+.catalogCarousel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  width: 100%;
+  max-width: 1600px;
+  padding: 0 20px;
+}
+
+.catalogCarouselSlots {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 36px;
+  flex: 1;
+  min-width: 0;
+}
+
+.catalogCarouselSlot {
+  flex: 0 0 auto;
+  width: 280px;
+  max-width: 32%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  min-height: 520px;
+}
+
+.catalogCarouselSlotLeft .catalogItem,
+.catalogCarouselSlotRight .catalogItem {
+  opacity: 0.5;
+  transform: scale(0.92);
+}
+
+.catalogCarouselSlotLeft .catalogItem:hover,
+.catalogCarouselSlotRight .catalogItem:hover {
+  opacity: 0.85;
+}
+
+.catalogCarouselSlotCenter .catalogItem {
+  opacity: 1;
+  transform: scale(1);
+  z-index: 2;
+}
+
+.catalogCarouselPlaceholder {
+  width: 100%;
+  height: 420px;
+  min-width: 200px;
+}
+
+.catalogItem {
+  width: 100%;
+  max-width: 280px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  border: none;
+  background: transparent;
+}
+
+.catalogItemActive .catalogItemImage {
+  border: none;
+  
+}
+
+.catalogItemImage {
+  width: 100%;
+  height: 360px;
+  flex-shrink: 0;
+  overflow: hidden;
+  border-radius: 8px;
+  border: none;
+  background: none;
+}
+
+.catalogItemImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.catalogItemCaption {
+  width: calc(100% + 48px);
+  min-width: 280px;
+  margin: 0 -24px;
+  margin-top: 12px;
+  padding: 14px 20px;
+  background: rgba(34, 17, 2, 0.92);
+  border-radius: 4px;
+  color: #FAE8BA;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.catalogItemTitle {
+  font-family: 'Anticva', serif !important;
+  font-size: 15px;
+  font-weight: normal;
+  margin: 0 0 6px 0;
+  text-transform: uppercase;
+  color: #FAE8BA;
+  line-height: 1.35;
+  letter-spacing: 0.5px;
+}
+
+.catalogItemMeta {
+  font-family: 'Anticva', serif !important;
+  font-size: 13px;
+  color: rgba(250, 232, 186, 0.9);
+  margin: 2px 0;
+  line-height: 1.4;
+}
+
+.catalogArrow {
+  background: rgba(227, 192, 133, 22%);
+  color: #E3C085;
+  border: none;
+  border-radius: 2px;
+  width: 56px;
+  height: 56px;
+  font-size: 28px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-family: 'Anticva', serif;
+}
+
+.catalogArrow:hover:not(:disabled) {
+  transform: scale(1.08);
+  background: rgba(203, 178, 147, 0.4);
+}
+
+.catalogArrow:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.catalogCounter {
+  font-family: 'Anticva', serif;
+  font-size: 16px;
+  color: #CBB293;
+  margin-top: 16px;
+}
+
+.catalogBottomNavigation {
+  position: absolute;
+  bottom: 2%;
+  left: 4%;
+}
+
+.catalogBackBtn {
+  font-family: 'Anticva', serif;
+  padding: 12px 24px;
+  font-size: 18px;
+  background: rgb(203, 178, 147, 10%);
+  color: #E3C085;
+  border: 2px solid #E3C085;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: normal;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.catalogBackBtn:hover {
+  transform: translateY(-2px);
+  background: rgba(203, 178, 147, 0.3);
+}
+
+@media (max-width: 968px) {
+  .catalogCarousel {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .catalogCarouselSlots {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .catalogCarouselSlot {
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .catalogCarouselSlotLeft .catalogItem,
+  .catalogCarouselSlotRight .catalogItem {
+    opacity: 0.6;
+    transform: none;
+  }
+
+  .catalogCarouselSlotCenter .catalogItem {
+    opacity: 1;
+  }
+
+  .catalogItem {
+    max-width: 320px;
+  }
+
+  .catalogItemImage {
+    height: 320px;
+  }
+
+  .catalogArrow {
+    width: 48px;
+    height: 48px;
+    font-size: 24px;
+  }
+}
