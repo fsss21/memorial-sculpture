@@ -99,9 +99,15 @@ function Catalog() {
   }
 
   const len = filteredItems.length
-  const prevItem = len > 0 ? filteredItems[(currentItemIndex - 1 + len) % len] : null
+  const prevIndex = (currentItemIndex - 1 + len) % len
+  const nextIndex = (currentItemIndex + 1) % len
   const centerItem = filteredItems[currentItemIndex] || null
-  const nextItem = len > 0 ? filteredItems[(currentItemIndex + 1) % len] : null
+  const prevItem =
+    len > 1 && prevIndex !== currentItemIndex && prevIndex !== nextIndex
+      ? filteredItems[prevIndex]
+      : null
+  const nextItem =
+    len > 1 && nextIndex !== currentItemIndex ? filteredItems[nextIndex] : null
 
   return (
     <div className={styles.catalog}>
@@ -217,11 +223,6 @@ function Catalog() {
             </div>
           )}
 
-          {filteredItems.length > 0 && (
-            <div className={styles.catalogCounter}>
-              {currentItemIndex + 1} / {filteredItems.length}
-            </div>
-          )}
         </div>
 
         <div className={styles.catalogBottomNavigation}>

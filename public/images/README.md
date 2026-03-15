@@ -1,7 +1,3 @@
 # Изображения каталога
 
-Положите сюда файлы:
-- `place_holder_img_one.png`
-- `place_holder_img_two.png`
-
-Они используются в карусели каталога и на страницах экспонатов.
+Фото экспонатов: имена с цифрой и подчёркиваниями, например `1_triskorni_tairova.jpg`, `2_zemmelgak_popov.jpg`. Пути задаются в `public/data/catalogItems.json` в поле `photos`.

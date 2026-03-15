@@ -159,60 +159,34 @@ function CatalogItem() {
         <div className={styles.catalogItemMain}>
           <div className={styles.catalogItemTextBlock}>
             <h1 className={styles.catalogItemName}>{item.name}</h1>
+            <div className={styles.catalogItemInfoBlock}>
+              {item.sculptor && (
+                <div className={styles.catalogItemInfoRow}>
+                  <span className={styles.catalogItemInfoLabel}>Скульптор:</span>
+                  <span className={styles.catalogItemInfoValue}>{item.sculptor}</span>
+                </div>
+              )}
 
-            {item.sculptor && (
-              <div className={styles.catalogItemInfoRow}>
-                <span className={styles.catalogItemInfoLabel}>Скульптор:</span>
-                <span className={styles.catalogItemInfoValue}>{item.sculptor}</span>
-              </div>
-            )}
+              {item.creationTime && (
+                <div className={styles.catalogItemInfoRow}>
+                  <span className={styles.catalogItemInfoLabel}>Время создания:</span>
+                  <span className={styles.catalogItemInfoValue}>{item.creationTime}</span>
+                </div>
+              )}
 
-            {item.creationTime && (
-              <div className={styles.catalogItemInfoRow}>
-                <span className={styles.catalogItemInfoLabel}>Время создания:</span>
-                <span className={styles.catalogItemInfoValue}>{item.creationTime}</span>
-              </div>
-            )}
-
-            {item.location && (
-              <div className={styles.catalogItemInfoRow}>
-                <span className={styles.catalogItemInfoLabel}>Где была установлена:</span>
-                <span className={styles.catalogItemInfoValue}>{item.location}</span>
-              </div>
-            )}
-
+              {item.location && (
+                <div className={styles.catalogItemInfoRow}>
+                  <span className={styles.catalogItemInfoLabel}>Где была установлена:</span>
+                  <span className={styles.catalogItemInfoValue}>{item.location}</span>
+                </div>
+              )}
+            </div>
             <div className={styles.catalogItemHistorySection}>
               {historyPages.length > 0 && currentPage ? (
                 <>
                   <h3 className={styles.catalogItemHistoryPageTitle}>{currentPage.title}</h3>
                   <p className={styles.catalogItemDescription}>{currentPage.content}</p>
-                  {historyPages.length > 1 && (
-                    <div className={styles.catalogItemTextNavigation}>
-                      <span className={styles.catalogItemTextCounter}>
-                        {currentTextIndex + 1} / {historyPages.length}
-                      </span>
-                      <div className={styles.catalogItemTextNavBtns}>
-                        <button
-                          type="button"
-                          className={styles.catalogItemTextNavBtn}
-                          onClick={handlePrevText}
-                          disabled={currentTextIndex === 0}
-                          aria-label="Предыдущий раздел"
-                        >
-                          <ArrowBackIosNewIcon />
-                        </button>
-                        <button
-                          type="button"
-                          className={styles.catalogItemTextNavBtn}
-                          onClick={handleNextText}
-                          disabled={currentTextIndex === historyPages.length - 1}
-                          aria-label="Следующий раздел"
-                        >
-                          <ArrowForwardIosIcon />
-                        </button>
-                      </div>
-                    </div>
-                  )}
+
                 </>
               ) : (
                 item.historyCreation && (
@@ -220,6 +194,33 @@ function CatalogItem() {
                 )
               )}
             </div>
+            {historyPages.length > 1 && (
+              <div className={styles.catalogItemTextNavigation}>
+                <span className={styles.catalogItemTextCounter}>
+                  {currentTextIndex + 1} / {historyPages.length}
+                </span>
+                <div className={styles.catalogItemTextNavBtns}>
+                  <button
+                    type="button"
+                    className={styles.catalogItemTextNavBtn}
+                    onClick={handlePrevText}
+                    disabled={currentTextIndex === 0}
+                    aria-label="Предыдущий раздел"
+                  >
+                    <ArrowBackIosNewIcon />
+                  </button>
+                  <button
+                    type="button"
+                    className={styles.catalogItemTextNavBtn}
+                    onClick={handleNextText}
+                    disabled={currentTextIndex === historyPages.length - 1}
+                    aria-label="Следующий раздел"
+                  >
+                    <ArrowForwardIosIcon />
+                  </button>
+                </div>
+              </div>
+            )}
           </div>
 
           {currentPhotos.length > 0 && (

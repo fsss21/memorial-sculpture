@@ -4,14 +4,26 @@
 
 export function getErasFromCreationTime(creationTime) {
   if (!creationTime) return []
-  const match = String(creationTime).match(/\d{4}/)
-  const year = match ? parseInt(match[0], 10) : null
-  if (year === null) return []
+  const str = String(creationTime).trim()
   const eras = []
-  if (year < 1800) eras.push('XVIII век')
-  if (year >= 1800 && year < 1900) eras.push('XIX век')
-  if (year >= 1760 && year <= 1840) eras.push('Эпоха классицизма')
-  return eras
+  // Текстовые обозначения эпох (напр. "Нач. XIX в.", "XIX в.")
+  if (/\bXIX\b/i.test(str)) {
+    eras.push('XIX век')
+    eras.push('Эпоха классицизма')
+  }
+  if (/\bXVIII\b/i.test(str)) {
+    eras.push('XVIII век')
+    eras.push('Эпоха классицизма')
+  }
+  // Год из числа (первое вхождение 4 цифр подряд)
+  const match = str.match(/\d{4}/)
+  const year = match ? parseInt(match[0], 10) : null
+  if (year !== null) {
+    if (year < 1800 && !eras.includes('XVIII век')) eras.push('XVIII век')
+    if (year >= 1800 && year < 1900 && !eras.includes('XIX век')) eras.push('XIX век')
+    if (year >= 1760 && year <= 1840 && !eras.includes('Эпоха классицизма')) eras.push('Эпоха классицизма')
+  }
+  return [...new Set(eras)]
 }
 
 export function matchesSearch(item, query) {
