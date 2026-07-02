@@ -67,16 +67,13 @@ function CatalogItem() {
 
   const handleNextPhoto = () => {
     const photos = getItemImages()
-    if (photos.length > 0) {
-      setCurrentPhotoIndex((prev) => (prev + 1) % photos.length)
-    }
+    if (currentPhotoIndex >= photos.length - 1) return
+    setCurrentPhotoIndex((prev) => prev + 1)
   }
 
   const handlePrevPhoto = () => {
-    const photos = getItemImages()
-    if (photos.length > 0) {
-      setCurrentPhotoIndex((prev) => (prev - 1 + photos.length) % photos.length)
-    }
+    if (currentPhotoIndex <= 0) return
+    setCurrentPhotoIndex((prev) => prev - 1)
   }
 
   const handleNextText = () => {
@@ -125,6 +122,8 @@ function CatalogItem() {
   }
 
   const currentPhotos = getItemImages()
+  const isPhotoAtStart = currentPhotoIndex <= 0
+  const isPhotoAtEnd = currentPhotoIndex >= currentPhotos.length - 1
 
   const historyPages = [
     item.historyCreation && { title: 'Краткая история создания', content: item.historyCreation },
@@ -236,26 +235,32 @@ function CatalogItem() {
                   onIndexChange={setCurrentPhotoIndex}
                 />
               </div>
-              <div className={styles.catalogItemPhotoNavigation}>
-                <button
-                  className={styles.catalogItemPhotoNavBtn}
-                  onClick={handlePrevPhoto}
-                  disabled={currentPhotos.length <= 1}
-                  aria-label="Предыдущее фото"
-                >
-                  <ArrowBackIosNewIcon />
-                </button>
-                <div className={styles.catalogItemPhotoCounter}>
-                  {currentPhotoIndex + 1} / {currentPhotos.length}
-                </div>
-                <button
-                  className={styles.catalogItemPhotoNavBtn}
-                  onClick={handleNextPhoto}
-                  disabled={currentPhotos.length <= 1}
-                  aria-label="Следующее фото"
-                >
-                  <ArrowForwardIosIcon />
-                </button>
+              <div
+                className={`${styles.catalogItemPhotoNavigation} ${currentPhotos.length === 1 ? styles.catalogItemPhotoNavigationSingle : ''}`}
+              >
+                {currentPhotos.length > 1 && (
+                  <>
+                    <button
+                      className={styles.catalogItemPhotoNavBtn}
+                      onClick={handlePrevPhoto}
+                      disabled={isPhotoAtStart}
+                      aria-label="Предыдущее фото"
+                    >
+                      <ArrowBackIosNewIcon />
+                    </button>
+                    <div className={styles.catalogItemPhotoCounter}>
+                      {currentPhotoIndex + 1} / {currentPhotos.length}
+                    </div>
+                    <button
+                      className={styles.catalogItemPhotoNavBtn}
+                      onClick={handleNextPhoto}
+                      disabled={isPhotoAtEnd}
+                      aria-label="Следующее фото"
+                    >
+                      <ArrowForwardIosIcon />
+                    </button>
+                  </>
+                )}
                 <button
                   className={styles.catalogItemFullscreenBtn}
                   onClick={handleFullscreen}

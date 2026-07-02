@@ -34,16 +34,15 @@
   right: 0;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   width: 275px;
-  gap: 16px;
   margin-right: 10px;
 }
 
 .headerItemNavArrows {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 2px;
 }
 
 .headerItemNavBtn {
@@ -53,7 +52,7 @@
   width: 50px;
   height: 50px;
   padding: 0;
-  color: #CBB293;
+  color: #fff;
   background: none;
   border: none;
   border-radius: 4px;
@@ -62,7 +61,7 @@
 }
 
 .headerItemNavBtn:hover:not(:disabled) {
-  border-color: #CBB293;
+  border-color: #fff;
 }
 
 .headerItemNavBtn:disabled {
@@ -76,7 +75,7 @@
   justify-content: center;
   width: 120px;
   height: 50px;
-  color: #CBB293;
+  color: #fff;
   background: none;
   border: none;
   border-radius: 4px;

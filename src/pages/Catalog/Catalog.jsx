@@ -139,10 +139,10 @@ function Catalog() {
                   {prevItem && (
                     <div
                       className={styles.catalogItem}
-                      onClick={() => handleItemClick(prevItem)}
+
                       role="button"
                       tabIndex={0}
-                      onKeyDown={(e) => e.key === 'Enter' && handleItemClick(prevItem)}
+
                     >
                       <div className={styles.catalogItemImage}>
                         <img src={getItemImageSrc(prevItem)} alt={prevItem.name} />
@@ -168,6 +168,7 @@ function Catalog() {
                       role="button"
                       tabIndex={0}
                       onKeyDown={(e) => e.key === 'Enter' && handleItemClick(centerItem)}
+                      style={{ cursor: 'pointer' }}
                     >
                       <div className={styles.catalogItemImage}>
                         <img src={getItemImageSrc(centerItem)} alt={centerItem.name} />
@@ -189,10 +190,10 @@ function Catalog() {
                   {nextItem && (
                     <div
                       className={styles.catalogItem}
-                      onClick={() => handleItemClick(nextItem)}
+
                       role="button"
                       tabIndex={0}
-                      onKeyDown={(e) => e.key === 'Enter' && handleItemClick(nextItem)}
+
                     >
                       <div className={styles.catalogItemImage}>
                         <img src={getItemImageSrc(nextItem)} alt={nextItem.name} />
